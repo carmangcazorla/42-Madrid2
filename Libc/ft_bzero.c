@@ -1,40 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: carmenga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/03 10:38:08 by carmenga          #+#    #+#             */
-/*   Updated: 2025/10/03 17:02:02 by carmenga         ###   ########.fr       */
+/*   Created: 2025/10/03 14:11:03 by carmenga          #+#    #+#             */
+/*   Updated: 2025/10/03 14:22:36 by carmenga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stddef.h>
 
-void	*ft_memcpy(void *d, const void *s, size_t len)
+void	ft_bzero(void *s, size_t n)
 {
-	size_t i;
-	unsigned char *p;
-	unsigned char *c;
+	size_t	len;
 
-	i = 0;
-	p = (unsigned char *)d;
-	c = (unsigned char *)s;
-	while(i < len)
+	len = 0;
+	while (len < n)
 	{
-		p[i] = c[i];
-		i++;
+		((char*)s)[len] = 0;
+		len ++;
 	}
-	p[i] = 0;
-	return (p);
 }
-
-#include <stdio.h>
 
 int main(void)
 {
-	char arr[]="holaaa";
-	char arr2[]="mundo";
-	printf("%p\n",ft_memcpy(arr, arr2, 3));
-	printf("%s\n", (char *)ft_memcpy(arr, arr2, 3));
+	ft_bzero("hola", 3);
 }

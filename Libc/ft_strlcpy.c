@@ -1,40 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: carmenga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/03 10:38:08 by carmenga          #+#    #+#             */
-/*   Updated: 2025/10/03 17:02:02 by carmenga         ###   ########.fr       */
+/*   Created: 2025/10/03 13:24:21 by carmenga          #+#    #+#             */
+/*   Updated: 2025/10/03 13:53:52 by carmenga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include <stddef.h>
 
-void	*ft_memcpy(void *d, const void *s, size_t len)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	size_t i;
-	unsigned char *p;
-	unsigned char *c;
+	unsigned int	i;
+	unsigned int	len;
 
 	i = 0;
-	p = (unsigned char *)d;
-	c = (unsigned char *)s;
-	while(i < len)
+	len = 0;
+	while (src[len] != '\0')
 	{
-		p[i] = c[i];
-		i++;
-	}
-	p[i] = 0;
-	return (p);
+		len++;
+	if (size != 0)
+	{
+		while (src[i] != '\0' && i < size - 1)
+		{
+			dst[i] = src[i];
+			i++;
+		}
+	dst[i] = '\0';
+	return (len);
 }
 
 #include <stdio.h>
-
 int main(void)
 {
-	char arr[]="holaaa";
-	char arr2[]="mundo";
-	printf("%p\n",ft_memcpy(arr, arr2, 3));
-	printf("%s\n", (char *)ft_memcpy(arr, arr2, 3));
+	char destino[4];
+        ft_strlcpy(destino, "hola mundo", 4);
+        printf("destino: %s\n", destino);
 }

@@ -1,37 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: carmenga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/03 10:25:27 by carmenga          #+#    #+#             */
-/*   Updated: 2025/10/03 16:37:16 by carmenga         ###   ########.fr       */
+/*   Created: 2025/10/03 15:29:20 by carmenga          #+#    #+#             */
+/*   Updated: 2025/10/03 15:32:27 by carmenga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-
-void	*ft_memset(void *s, int c, size_t n)
+int	ft_isalnum (int c)
 {
-	size_t	len;
-	unsigned char *p;
-
-	
-	p = (unsigned char *)s;
-	len = 0;
-	while (len < n)
-	{
-		p[len] = c;
-		len ++;
-	}
-	return (s);
-}
-#include <stdio.h>
-#include <string.h>
-int main(void)
-{
-	char arr[]="holaaa";
-	printf("%p\n",ft_memset(arr, 's', 3));
-	printf("%s\n", (char *)ft_memset(arr, 's', 3));
+	if (!((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (*str >= '0' && *str <= '9')))
+		return (0);
+	else
+		return (1);
 }

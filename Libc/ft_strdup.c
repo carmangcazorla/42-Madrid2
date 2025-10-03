@@ -1,40 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: carmenga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/03 10:38:08 by carmenga          #+#    #+#             */
-/*   Updated: 2025/10/03 17:02:02 by carmenga         ###   ########.fr       */
+/*   Created: 2025/10/03 16:07:16 by carmenga          #+#    #+#             */
+/*   Updated: 2025/10/03 16:10:59 by carmenga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stddef.h>
 
-void	*ft_memcpy(void *d, const void *s, size_t len)
+#include <stdlib.h>
+
+char	*ft_strdup(const char *src)
 {
-	size_t i;
-	unsigned char *p;
-	unsigned char *c;
+	int	i;
+	char	*dup;
 
 	i = 0;
-	p = (unsigned char *)d;
-	c = (unsigned char *)s;
-	while(i < len)
+	while (src[i])
 	{
-		p[i] = c[i];
 		i++;
 	}
-	p[i] = 0;
-	return (p);
-}
-
-#include <stdio.h>
-
-int main(void)
-{
-	char arr[]="holaaa";
-	char arr2[]="mundo";
-	printf("%p\n",ft_memcpy(arr, arr2, 3));
-	printf("%s\n", (char *)ft_memcpy(arr, arr2, 3));
+	dup = malloc(i + 1);
+	if (!dup)
+	{
+		return (NULL);
+	}
+	i = 0;
+	while (src[i])
+	{
+		dup[i] = src[i];
+		i++;
+	}
+	dup[i] = '\0';
+	return (&dup);
 }

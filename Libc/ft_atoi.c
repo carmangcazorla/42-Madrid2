@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: carmenga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/03 10:25:27 by carmenga          #+#    #+#             */
-/*   Updated: 2025/10/03 16:37:16 by carmenga         ###   ########.fr       */
+/*   Created: 2025/10/03 15:56:32 by carmenga          #+#    #+#             */
+/*   Updated: 2025/10/03 15:56:41 by carmenga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-
-void	*ft_memset(void *s, int c, size_t n)
+int	ft_atoi(char *str)
 {
-	size_t	len;
-	unsigned char *p;
+	int	number;
+	int	sing;
 
-	
-	p = (unsigned char *)s;
-	len = 0;
-	while (len < n)
+	number = 0;
+	sing = 1;
+	while ((*str >= 9 && *str <= 13) || *str == 32)
+		str++;
+	if(*str == '+' || *str == '-')
 	{
-		p[len] = c;
-		len ++;
+		if(*str  == '-')
+			sing = -1;
+		str++;
 	}
-	return (s);
-}
-#include <stdio.h>
-#include <string.h>
-int main(void)
-{
-	char arr[]="holaaa";
-	printf("%p\n",ft_memset(arr, 's', 3));
-	printf("%s\n", (char *)ft_memset(arr, 's', 3));
+	while (*str >= 48 && *str <= 57)
+	{
+		number *= 10;
+		number += *str - 48;
+		str++;
+	}
+	return ((sing)* number);
 }

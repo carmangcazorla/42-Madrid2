@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: carmenga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/03 10:38:08 by carmenga          #+#    #+#             */
-/*   Updated: 2025/10/03 17:02:02 by carmenga         ###   ########.fr       */
+/*   Created: 2025/10/03 16:00:26 by carmenga          #+#    #+#             */
+/*   Updated: 2025/10/03 16:01:36 by carmenga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stddef.h>
 
-void	*ft_memcpy(void *d, const void *s, size_t len)
+int	ft_strncmp(char *s1, char *s2, size_t  n)
 {
-	size_t i;
-	unsigned char *p;
-	unsigned char *c;
+	size_t	i;
 
 	i = 0;
-	p = (unsigned char *)d;
-	c = (unsigned char *)s;
-	while(i < len)
+	if (n == 0)
 	{
-		p[i] = c[i];
+		return (0);
+	}
+	while ((s1[i] != '\0' && s2[i] != '\0' && i < n -1) && s1[i] == s2[i])
+	{
 		i++;
 	}
-	p[i] = 0;
-	return (p);
-}
-
-#include <stdio.h>
-
-int main(void)
-{
-	char arr[]="holaaa";
-	char arr2[]="mundo";
-	printf("%p\n",ft_memcpy(arr, arr2, 3));
-	printf("%s\n", (char *)ft_memcpy(arr, arr2, 3));
+	return (s1[i] - s2[i]);
 }
