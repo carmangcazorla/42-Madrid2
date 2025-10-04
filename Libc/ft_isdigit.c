@@ -21,3 +21,21 @@ int	ft_isdigit(int c)
 		return(1);
 	}
 }
+#include <stdio.h>
+
+int ft_isdigit(int c);
+
+int main(void)
+{
+    char tests[] = {'0', '5', '9', 'A', '-', ' '};
+    int size = sizeof(tests) / sizeof(tests[0]);
+
+    for (int i = 0; i < size; i++)
+    {
+        char c = tests[i];
+        printf("Char: '%c' (ASCII %d) -> ft_isdigit = %d\n",
+               (c >= 32 && c <= 126) ? c : '.', c, ft_isdigit(c));
+    }
+
+    return 0;
+}
