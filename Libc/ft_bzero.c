@@ -9,6 +9,7 @@
 /*   Updated: 2025/10/03 14:22:36 by carmenga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 #include <stddef.h>
 
 void	ft_bzero(void *s, size_t n)
@@ -21,26 +22,4 @@ void	ft_bzero(void *s, size_t n)
 		((char*)s)[len] = 0;
 		len ++;
 	}
-}
-#include <stdio.h>
-int main(void)
-{
-    char buffer[] = "hola mundo";
-
-    printf("Antes: %s\n", buffer);
-    ft_bzero(buffer, 3);  // Pone a 0 los tres primeros chars
-    printf("Después (con printf directo): %s\n", buffer);
-
-    // Para ver los bytes, mejor imprimir manualmente:
-    printf("Bytes después de bzero:\n");
-    for (size_t i = 0; i < sizeof(buffer); i++)
-    {
-        if (buffer[i] == 0)
-            printf("\\0 ");
-        else
-            printf("%c ", buffer[i]);
-    }
-    printf("\n");
-
-    return 0;
 }

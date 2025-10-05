@@ -9,6 +9,7 @@
 /*   Updated: 2025/10/03 17:19:31 by carmenga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 #include <stddef.h>
 
 int ft_memcmp(const void *s1, const void *s2, size_t n)
@@ -26,12 +27,3 @@ int ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return (p[i] - c[i]);
 }
-
-#include <stdio.h>
-int main(void)
-{
-	char arr[]="holaaa";
-	char arr2[] ="holas";
-	printf("%d\n",ft_memcmp(arr, arr2, 5));
-}
-

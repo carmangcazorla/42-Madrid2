@@ -9,29 +9,21 @@
 /*   Updated: 2025/10/03 16:37:16 by carmenga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include "libft.h"
 #include <stddef.h>
 
-void	*ft_memset(void *s, int c, size_t n)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	size_t	len;
+	size_t	i;
 	unsigned char *p;
 
 	
-	p = (unsigned char *)s;
-	len = 0;
-	while (len < n)
+	p = (unsigned char *)b;
+	i = 0;
+	while (i < len)
 	{
-		p[len] = c;
-		len ++;
+		p[i] = c;
+		i ++;
 	}
-	return (s);
-}
-#include <stdio.h>
-#include <string.h>
-int main(void)
-{
-	char arr[]="holaaa";
-	printf("%p\n",ft_memset(arr, 's', 3));
-	printf("%s\n", (char *)ft_memset(arr, 's', 3));
+	return (b);
 }
