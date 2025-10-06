@@ -1,46 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: carmenga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/06 09:58:57 by carmenga          #+#    #+#             */
-/*   Updated: 2025/10/06 10:01:00 by carmenga         ###   ########.fr       */
+/*   Created: 2025/10/06 10:35:27 by carmenga          #+#    #+#             */
+/*   Updated: 2025/10/06 12:27:07 by carmenga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
-#include <stddef.h>
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	**ft_split(char const *s; char c)
 {
-	char	*sub;
+	char[]	arr;
 	int	i;
+	int	j;
+	int	index;
 
+	index = 0;
 	i = 0;
-	sub = (char *)malloc(len - start + 1);
-	if (!sub || !s)
-		return (0);
-	if (start < ft_strlen(s))
+	while ((char const *)s[index] != 0)
 	{
-		sub[i] = '\0';
-		return (sub);
-	}
-	while (start <= len && s[start] != 0)
-	{
-		sub[i] = s[start];
-		start++;
+		j = 0;
+		while ((char const *)s[index] != c)
+		{
+			arr[i][j] = (char const *)s[index];
+			j++;
+			index++;
+		}
+		index++;
+		arr[i][j] = '\0';
 		i++;
 	}
-	sub[i] = '\0';
-	return (sub);
+	return (arr);
 }
-#include <stdio.h>
 
 int main(void)
 {
-	char *str = "Hola mundo";
-	char *res = ft_substr(str, 5, 3);
-	printf("%s\n", res);
+	char	*str = "Hola como estas hoy";
+	printf("%s\n", ft_split((char const *)str,(char )' '));
 }
