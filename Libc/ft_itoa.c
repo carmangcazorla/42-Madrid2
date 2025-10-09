@@ -8,7 +8,8 @@
 /*   Created: 2025/10/06 12:59:28 by carmenga          #+#    #+#             */
 /*   Updated: 2025/10/06 16:36:53 by carmenga         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */#include "libft.h"
+/* ************************************************************************** */
+#include "libft.h"
 #include <stdlib.h>
 
 char	*ft_strrev(char *str, char *dst)
@@ -34,6 +35,10 @@ char	*ft_itoa(int n)
 	int	j;
 
 	i = 0;
+	if (n < 0)
+		dst[i] = '-';
+		n *= -1;
+		i++;
 	while(n > 0)
 	{
 		str[i] = '0' + (n % 10);
@@ -43,12 +48,7 @@ char	*ft_itoa(int n)
 	dst = (char *)malloc(ft_strlen(str) + 1);
 	if (!dst)
 		return (0);
-	while(i >= 0)
-	{
-		dst[j] = str[i];
-		i--;
-		j++;
-	}
+	ft_strrev(str, dst);
 	dst[j] = '\0';
 	return (dst);
 }
