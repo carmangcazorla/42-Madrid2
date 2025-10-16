@@ -17,7 +17,7 @@ void	ft_putendl_fd(char *s, int fd)
 
 	i = 0;
 	if (!s)
-		return;
+		return ;
 	while (s[i] != 0)
 	{
 		write(fd, &s[i], 1);

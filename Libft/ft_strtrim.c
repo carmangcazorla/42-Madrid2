@@ -10,9 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-#include <stdlib.h>
 
-int static	ft_chrcmp(char c, const char *set)
+static int	ft_chrcmp(char c, const char *set)
 {
 	int	i;
 

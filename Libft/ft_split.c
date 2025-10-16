@@ -48,25 +48,21 @@ static char	**ft_freewords(char **arr)
 	return (arr);
 }
 
-static int	ft_countletters(char const *s,int i, char c)
+static int	ft_countletters(char const *s, int i, char c)
 {
 	int	count;
 
 	count = 0;
 	if (c == '\0')
-		while (s[i])
-		{
+		while (s[i++])
 			count++;
-			i++;
-		}
-	else
-		while (s[i] && s[i] != c)
-		{
-			count++;
-			i++;
-		}
+	while (s[i] && s[i] != c)
+	{
+		count++;
+		i++;
+	}
 	return (count);
-} 
+}
 
 static char	**init_array(char **arr, char const *s, char c)
 {
@@ -80,22 +76,21 @@ static char	**init_array(char **arr, char const *s, char c)
 	while (s[k] != 0)
 	{
 		while (s[k] == c && s[k])
-                        k++;
+			k++;
 		len = ft_countletters(s, k, c);
 		if (len > 0)
 		{
 			arr[i] = (char *)malloc(len + 1);
 			if (!arr[i])
-				return (ft_freewords(arr));
+				return (ft_freewords(arr), NULL);
 			j = 0;
-			while (s[k] && s[k] != c && len-- > 0 )
+			while (s[k] && s[k] != c && len-- > 0)
 				arr[i][j++] = s[k++];
 			arr[i][j] = '\0';
 			i++;
 		}
 	}
-	arr[i] = NULL;
-	return (arr);
+	return (arr[i] = NULL, arr);
 }
 
 char	**ft_split(char	const *s, char c)
@@ -105,7 +100,7 @@ char	**ft_split(char	const *s, char c)
 	if (!s)
 		return (NULL);
 	arr = (char **)malloc((ft_counter(s, c) + 1) * sizeof (char *));
-        if (!arr)
+	if (!arr)
 		return (NULL);
 	arr = init_array(arr, s, c);
 	return (arr);
