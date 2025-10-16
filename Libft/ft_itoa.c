@@ -17,10 +17,9 @@ int	ft_countnum(int n)
 	int	count;
 
 	count = 0;
-	if (n < 0)
+	if (n <= 0)
 	{
 		count++;
-		n *= -1;
 	}
 	while (n)
 	{
@@ -37,15 +36,13 @@ char	*ft_itoa(int n)
 	long int	nb;
 
 	i = ft_countnum(n);
-	nb = n;
-	str = (char *)malloc((i + 1) * sizeof(int));
+	nb = (long int)n;
+	str = (char *)malloc((i + 1) * sizeof(char));
 	if (!str)
 		return (0);
 	str[i--] = '\0';
 	if (nb == 0)
-	{
 		str[0] = '0';
-	}
 	if (nb < 0)
 	{
 		str[0] = '-';
