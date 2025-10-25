@@ -13,11 +13,10 @@
 NAME = libftprintf.a
 
 CC = cc
-CCFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
-SRC = ft_printf.c printf_basic.c printf_numbers.c printf_unsigned.c \
-	  printf_hexa.c printf_pointer.c
+SRC = ft_printf.c printf_basic.c ft_printfhexa.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -34,4 +33,7 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+i.PHONY: all clean fclean re

@@ -10,70 +10,46 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_printfhexa(int n)
+int ft_printfhexa(unsigned int n, int uppercase)
 {
-    char    *hexa;
-    int     mod;
-    int     i;
+        int     count;
 
-    i = 0;
-    while(n > 0)
-    {
-        mod = n % 16;
-        if (mod >= 0 && mod <= 10)
-            hexa[i] =(char)(mod + '0');
-        if (mod > 10 && mod < 16)
-            hexa[i] = (char)((mod - 10) + 'a');
-        n = n / 16;
-        i++;
-    }
-    hexa[i++] = ((n / 16) + '0');
-    while (i >= 0)
-    {
-        ft_printfchar(hexa[i]);
-        i--;
-    }
-    ft_printfchar('\0');
-    return (ft_strlen(hexa));
+        count = 0;
+        if (n >= 16)
+            count += ft_printfhexa(n / 16, uppercase);
+        else if (n == 0)
+            count += ft_printfchar('0');
+        if ((n % 16) < 10)
+            count += ft_printfchar((n % 16) + '0');
+        else if (uppercase)
+            count += ft_printfchar(((n % 16) - 10) + 'A');
+        else
+            count += ft_printfchar(((n % 16) - 10) + 'a');
+        return (count);
 }
 
-int    ft_printfHexa(int n)
+int	ft_printptrhexa(unsigned long ptr)
 {
-    char *hexa;
-    int  mod;
-    int  i;
+	int	count;
 
-    i = 0;
-    while(n > 0)
-    {
-        mod = n % 16;
-        if (mod >= 0 && mod <= 10)
-            hexa[i] =(char)(mod + '0');
-        if (mod > 10 && mod < 16)
-            hexa[i] = (char)((mod - 10) + 'A');
-        n = n / 16;
-        i++;
-    }
-    hexa[i++] = ((n / 16) + '0');
-    while (i >= 0)
-    {
-        ft_printfchar(hexa[i]);
-        i--;
-    }
-    ft_printfchar('\0');
-    return (ft_strlen(hexa));
+	count = 0;
+	if (ptr >= 16)
+            count += ft_printptrhexa(ptr / 16);
+        if ((ptr % 16) < 10)
+            count += ft_printfchar((ptr % 16) + '0');
+        else
+            count += ft_printfchar(((ptr % 16) - 10) + 'a');
+	return (count);
 }
 
-int ft_printfpointer(int n)
+int ft_printfpointer(unsigned long ptr)
 {
-    while (n > 0)
-    {
-        ft_printfstr("0x");
-    }
-}
+	int	count;
 
-int main(void)
-{
-    ft_printfhexa(255);
-    return (0);
+	count = 0;
+	if (!ptr)
+		return (ft_printfstr("(nil)"));
+	count += ft_printfstr("0x");
+	count += ft_printptrhexa(ptr);
+        return (count);
 }

@@ -16,49 +16,27 @@ int	ft_printfchar(char c)
 	return (1);
 }
 
-int ft_strlen(char *str)
-{
-    int i;
-
-    i = 0;
-    while (str[i] != '\0')
-        i++;
-    return (i);
-}
-
 int	ft_printfstr(char *str)
 {
 	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		ft_printfchar(str[i]);
-		i++;
-	}
-	ft_printfchar('\0');
-	return (ft_strlen(str));
-}
-
-int	ft_countnum(int n)
-{
 	int	count;
 
+	i = 0;
 	count = 0;
-	if (n <= 0)
+	while (str[i])
 	{
-		count++;
+		count += ft_printfchar(str[i]);
+		i++;
 	}
-	while (n)
-	{
-		count++;
-		n /= 10;
-	}
+	count += ft_printfchar('\0');
 	return (count);
 }
 
 int	ft_printfnbr(int n)
 {
+	int	count;
+
+	count = 0;
 	if (n == -2147483648)
 	{
 		ft_printfstr("-2147483648");
@@ -73,18 +51,21 @@ int	ft_printfnbr(int n)
 	{
 		ft_printfnbr(n / 10);
 	}
-	ft_printfchar((n % 10) + '0');
-	return (ft_countnum(n) + 1);
+	count += ft_printfchar((n % 10) + '0');
+	return (count);
 }
 
-void	ft_printfunsigned(unsigned int n)
+int	ft_printfunsigned(unsigned int n)
 {
+	int	count;
+
+	count = 0;
 	if (n >= 10)
 	{
 		ft_printfunsigned(n / 10);
 	}
-	ft_printfchar((n % 10) + '0');
-	return (ft_countnum(n) + 1);
+	count += ft_printfchar((n % 10) + '0');
+	return (count);
 }
 
 int	main(void)

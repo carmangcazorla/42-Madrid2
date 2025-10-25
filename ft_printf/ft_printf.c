@@ -10,52 +10,48 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	printfiteri(char const *str, void va_list(args, void));
+int	identifier(va_list args, const char c)
+{
+	int	count;
+
+	count = 0;
+	if (c == 'd' || c == 'i')
+		count += ft_printfnbr(var_arg(args, int));
+	if (c == 'n')
+		count += ft_printfunisigned(var_arg(args, unsigned int));
+	if (c == 'c')
+		count += ft_printfchar(var_arg(args, char);
+	if (c == 's')
+		count += ft_printfstr(var_arg(args, char *));
+	if (c == '%')
+		count += ft_printfchar('%');
+	if (c == 'h')
+		count += ft_printfhexa(var_arg(args, unsigned int), 0);
+	if (c == 'H')
+		count += ft_printfhexa(var_arg(args, unsigned int), 1);
+	if (c == 'p')
+		count += ft_printfpointer(args);
+	return (count);
+}
+
+int	ft_prinf(char const *format, ...);
 {
 	int	i;
-
-	while (str[i])
-	{
-		if (str[i] == '%')
-		{
-			i++;
-			identifier(str[i]; argument);
-		}
-		else
-			printfiteri(str[i]);
-		i++;
-	}
-}
-
-void	identifier(char c, void va_list(args, void))
-{
-	if (c == 'd' || c == 'i')
-		ft_printfnbr(args);
-	if (c == 'n')
-		ft_printfunisigned(args);
-	if (c == 'c')
-		ft_printfchar(args);
-	if (c == 's')
-		ft_printfstr(args);
-	if (c == '%')
-		ft_printfchar('%');
-	if (c == 'h')
-		ft_printfhexa(args);
-	if (c == 'H')
-		ft_printfHexa(args);
-	if (c == 'p')
-		ft_printfpointer(args);
-}
-
-void	ft_prinf(char const *str, ...);
-{
+	int	count;
 	va_list	args;
 
-	va_start(args, void);
-	while (args)
+	va_start(args, format);
+	while (format[i])
 	{
-		printfiteri(str, va_list(args, void));
-		va_arg(argg, void);
+		if (format[i] == '%')
+		{
+			i++;
+			count += identifier(args, formant[i]);
+			va_arg(argg, void);
+		}
+		count += ft_printfchar(format[i]);
+		i++;
 	}
 	va_end(args);
+	return (count);
 }
