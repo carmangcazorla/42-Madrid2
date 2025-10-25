@@ -6,7 +6,7 @@
 /*   By: carmenga <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 14:13:50 by carmenga          #+#    #+#             */
-/*   Updated: 2025/10/18 14:13:57 by carmenga         ###   ########.fr       */
+/*   Updated: 2025/10/25 15:18:06 by carmenga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,14 @@
 # include <stdarg.h>
 # include <unistd.h>
 
-void	ft_printfchar(char c);
-void	ft_printfstr(char *str);
-void	ft_printfnbr(int n);
-void	ft_printfunsigned(unsigned int n);
-void    ft_printfhexa(int n);
-void    ft_printfHexa(int n);
-void    ft_printfpointer(void *ptr);
-int		printfiteri(char const *str, void argument);
-void	identifier(char c, void va_list(args, void));
-void	ft_prinf(char const *str, ...);
+int	ft_printfchar(char c);
+int	ft_printfstr(char *str);
+int	ft_printfnbr(int n);
+int	ft_printfunsigned(unsigned int n);
+int	ft_printfhexa(unsigned int n, int uppercase);
+int	ft_printfpointer(void *ptr);
+int	ft_printptrhexa(unsigned long ptr);
+int	identifier(va_list args, const char c);
+int	ft_printf(char const *str, ...);
 
 #endif

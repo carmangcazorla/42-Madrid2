@@ -9,6 +9,7 @@
 /*   Updated: 2025/10/18 10:42:55 by carmenga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "ft_printf.h"
 
 int	ft_printfchar(char c)
 {
@@ -23,12 +24,16 @@ int	ft_printfstr(char *str)
 
 	i = 0;
 	count = 0;
+	if (!str)
+	{
+		count += ft_printfstr("(null)");
+		return (count);
+	}
 	while (str[i])
 	{
 		count += ft_printfchar(str[i]);
 		i++;
 	}
-	count += ft_printfchar('\0');
 	return (count);
 }
 
@@ -39,17 +44,17 @@ int	ft_printfnbr(int n)
 	count = 0;
 	if (n == -2147483648)
 	{
-		ft_printfstr("-2147483648");
-		return ;
+		count += ft_printfstr("-2147483648");
+		return (count);
 	}
 	if (n < 0)
 	{
-		ft_printfchar('-');
+		count += ft_printfchar('-');
 		n = -n;
 	}
 	if (n >= 10)
 	{
-		ft_printfnbr(n / 10);
+		count += ft_printfnbr(n / 10);
 	}
 	count += ft_printfchar((n % 10) + '0');
 	return (count);
@@ -62,23 +67,8 @@ int	ft_printfunsigned(unsigned int n)
 	count = 0;
 	if (n >= 10)
 	{
-		ft_printfunsigned(n / 10);
+		count += ft_printfunsigned(n / 10);
 	}
 	count += ft_printfchar((n % 10) + '0');
 	return (count);
-}
-
-int	main(void)
-{
-	ft_printfchar('A');
-	ft_printfchar('\n');
-	ft_printfstr("Hello, World!");
-	ft_printfchar('\n');
-	ft_printfnbr(-12345);
-	ft_printfchar('\n');
-	ft_printfunsigned(67890);
-	ft_printfchar('\n');
-	ft_printfpercent();
-	ft_printfchar('\n');
-	return (0);
 }
