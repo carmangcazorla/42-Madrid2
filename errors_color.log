@@ -1,0 +1,73 @@
+For [0;35m/home/carmenga/francinette/tests/printf/printfTester/tests/c_test.cpp[0m:
+[0;33m25:[0m 	TEST(1, print("%c", '0'));
+[0;33m27:[0m 	TEST(3, print(" %c", '0' - 256));
+[0;33m29:[0m 	TEST(5, print(" %c %c %c ", '0', 0, '1'));
+[0;33m30:[0m 	TEST(6, print(" %c %c %c ", ' ', ' ', ' '));
+[0;33m31:[0m 	TEST(7, print(" %c %c %c ", '1', '2', '3'));
+[0;33m32:[0m 	TEST(8, print(" %c %c %c ", '2', '1', 0));
+
+For [0;35m/home/carmenga/francinette/tests/printf/printfTester/tests/s_test.cpp[0m:
+[0;33m27:[0m 	TEST(1, print("%s", ""));
+[0;33m28:[0m 	TEST(2, print(" %s", ""));
+[0;33m32:[0m 	TEST(6, print(" %s %s ", "", "-"));
+[0;33m33:[0m 	TEST(7, print(" %s %s ", " - ", ""));
+[0;33m34:[0m 	TEST(8, print(" %s %s %s %s %s", " - ", "", "4", "", s2));
+[0;33m35:[0m 	TEST(9, print(" %s %s %s %s %s ", " - ", "", "4", "", "2 "));
+
+For [0;35m/home/carmenga/francinette/tests/printf/printfTester/tests/p_test.cpp[0m:
+[0;33m30:[0m 	TEST(6, print(" %p %p ", LONG_MIN, LONG_MAX));
+[0;33m31:[0m 	TEST(7, print(" %p %p ", INT_MIN, INT_MAX));
+[0;33m32:[0m 	TEST(8, print(" %p %p ", ULONG_MAX, -ULONG_MAX));
+[0;33m33:[0m 	TEST(9, print(" %p %p ", 0, 0));
+
+For [0;35m/home/carmenga/francinette/tests/printf/printfTester/tests/d_test.cpp[0m:
+[0;33m53:[0m 	TEST(29, print(" %d %d %d %d %d %d %d", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42));
+
+For [0;35m/home/carmenga/francinette/tests/printf/printfTester/tests/i_test.cpp[0m:
+[0;33m53:[0m 	TEST(29, print(" %i %i %i %i %i %i %i", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42));
+
+For [0;35m/home/carmenga/francinette/tests/printf/printfTester/tests/u_test.cpp[0m:
+[0;33m25:[0m 	TEST(1, print(" %u ", 0));
+[0;33m26:[0m 	TEST(2, print(" %u ", -1));
+[0;33m27:[0m 	TEST(3, print(" %u ", 1));
+[0;33m28:[0m 	TEST(4, print(" %u ", 9));
+[0;33m29:[0m 	TEST(5, print(" %u ", 10));
+[0;33m30:[0m 	TEST(6, print(" %u ", 11));
+[0;33m31:[0m 	TEST(7, print(" %u ", 15));
+[0;33m32:[0m 	TEST(8, print(" %u ", 16));
+[0;33m33:[0m 	TEST(9, print(" %u ", 17));
+[0;33m34:[0m 	TEST(10, print(" %u ", 99));
+[0;33m35:[0m 	TEST(11, print(" %u ", 100));
+[0;33m36:[0m 	TEST(12, print(" %u ", 101));
+[0;33m37:[0m 	TEST(13, print(" %u ", -9));
+[0;33m38:[0m 	TEST(14, print(" %u ", -10));
+[0;33m39:[0m 	TEST(15, print(" %u ", -11));
+[0;33m40:[0m 	TEST(16, print(" %u ", -14));
+[0;33m41:[0m 	TEST(17, print(" %u ", -15));
+[0;33m42:[0m 	TEST(18, print(" %u ", -16));
+[0;33m43:[0m 	TEST(19, print(" %u ", -99));
+[0;33m44:[0m 	TEST(20, print(" %u ", -100));
+[0;33m45:[0m 	TEST(21, print(" %u ", -101));
+[0;33m46:[0m 	TEST(22, print(" %u ", INT_MAX));
+[0;33m47:[0m 	TEST(23, print(" %u ", INT_MIN));
+[0;33m48:[0m 	TEST(24, print(" %u ", LONG_MAX));
+[0;33m49:[0m 	TEST(25, print(" %u ", LONG_MIN));
+[0;33m50:[0m 	TEST(26, print(" %u ", UINT_MAX));
+[0;33m51:[0m 	TEST(27, print(" %u ", ULONG_MAX));
+[0;33m52:[0m 	TEST(28, print(" %u ", 9223372036854775807LL));
+[0;33m53:[0m 	TEST(29, print(" %u %u %u %u %u %u %u", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42));
+
+For [0;35m/home/carmenga/francinette/tests/printf/printfTester/tests/x_test.cpp[0m:
+[0;33m53:[0m 	TEST(29, print(" %x %x %x %x %x %x %x", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42));
+
+For [0;35m/home/carmenga/francinette/tests/printf/printfTester/tests/upperx_test.cpp[0m:
+[0;33m53:[0m 	TEST(29, print(" %X %X %X %X %X %X %X", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42));
+
+For [0;35m/home/carmenga/francinette/tests/printf/printfTester/tests/percent_test.cpp[0m:
+[0;33m26:[0m 	TEST(2, print(" %%%% "));
+[0;33m30:[0m 	TEST(6, print("%%"));
+[0;33m31:[0m 	TEST(7, print("%% %%"));
+
+For [0;35m/home/carmenga/francinette/tests/printf/printfTester/tests/mix_test.cpp[0m:
+[0;33m25:[0m 	TEST(1, print("%%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %%%c%%%s%%%d%%%i%%%u%%%x%%%X%%%% %c%%", 'A', "42", 42, 42 ,42 , 42, 42, 'B', "-42", -42, -42 ,-42 ,-42, 42, 'C', "0", 0, 0 ,0 ,0, 42, 0));
+
