@@ -22,7 +22,7 @@ int	ft_printfnbr(int n);
 int	ft_printfunsigned(unsigned int n);
 int	ft_printfhexa(unsigned int n, int uppercase);
 int	ft_printfpointer(void *ptr);
-int	ft_printptrhexa(unsigned long ptr);
+int	ft_printptrhexa(unsigned long long ptr);
 int	identifier(va_list args, const char c);
 int	ft_printf(char const *str, ...);
 

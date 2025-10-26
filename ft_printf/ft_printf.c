@@ -18,7 +18,7 @@ int	identifier(va_list args, const char c)
 	count = 0;
 	if (c == 'd' || c == 'i')
 		count += ft_printfnbr(va_arg(args, int));
-	if (c == 'n')
+	if (c == 'u')
 		count += ft_printfunsigned(va_arg(args, unsigned int));
 	if (c == 'c')
 		count += ft_printfchar(va_arg(args, int));
@@ -35,29 +35,32 @@ int	identifier(va_list args, const char c)
 	return (count);
 }
 
-int	ft_printf(char const *format, ...)
+int     ft_printf(char const *format, ...)
 {
-	int		i;
-	int		count;
-	va_list	args;
+        int             i;
+        int             count;
+        va_list args;
 
-	i = 0;
-	count = 0;
-	va_start(args, format);
-	if (!format)
-		return (-1);
-	while (format[i])
-	{
-		if (format[i] == '%')
-		{
-			i++;
-			count += identifier(args, format[i]);
-			va_arg(args, void *);
-			i++;
-		}
-		count += ft_printfchar(format[i]);
-		i++;
-	}
-	va_end(args);
-	return (count);
+        i = 0;
+        count = 0;
+        va_start(args, format);
+        if (!format)
+                return (-1);
+        while (format[i])
+        {
+                if (format[i] == '%')
+                {
+                        if (format[i + 1] == '\0')
+                                return (-1);
+                        i++;
+                        count += identifier(args, format[i]);
+                }
+                else
+                {
+                        count += ft_printfchar(format[i]);
+                }
+                i++;
+        }
+        va_end(args);
+        return (count);
 }
