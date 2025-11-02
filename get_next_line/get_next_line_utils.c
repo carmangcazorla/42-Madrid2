@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: carmenga <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/11/02 17:32:10 by carmenga          #+#    #+#             */
+/*   Updated: 2025/11/02 17:32:15 by carmenga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+#include "get_next_line.h"
+
 char    *ft_strdup(const char *src)
 {
         int             i;
@@ -15,6 +28,7 @@ char    *ft_strdup(const char *src)
         }
         i = 0;
         while (src[i])
+
         {
                 dup[i] = src[i];
                 i++;
@@ -69,7 +83,7 @@ static char     *ft_strncpy(char *dest, char *src, int n)
         return (dest);
 }
 
-char    *ft_strjoin(char const *s1, char const *s2)
+char    *ft_strjoin(char *s1, char *s2)
 {
         int             len1;
         int             len2;
