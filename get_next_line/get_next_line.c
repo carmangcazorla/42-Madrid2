@@ -11,72 +11,135 @@
 /* ************************************************************************** */
 #include "get_next_line.h"
 
-char	*save_remainder(char *line)
+char	*update_remainder(char *remainder)
 {
-	static char	*save;
-	char		*next_line;
+	char	*update;
+	char	*temp;
 
-	next_line = ft_strchr(line,'\n');
-	if (next_line)
-		save = ft_strdup(next_line + 1);
-	return(save);
-}
-
-void	ft_free(char *save)
-{
-	if (save)
+	update = ft_strchr(remainder, '\n');
+	if (!update)
 	{
-		free (save);
+		free(remainder);
+		return(NULL);
 	}
+	temp = ft_strdup(update + 1);
+	free(remainder);
+	remainder = temp;
+	return(remainder);
 }
 
-char	*read_line(int fd, char *save)
+char	*return_line(char *remainder)
 {
-	int		rd;
+	char	*line;
+	int		len;
+	int		i;
+
+	len = 0;
+	while (remainder[len] != '\n' && remainder[len] != '\0')
+		len++;
+	if (remainder[len] == '\n')
+		len ++;
+	line = malloc(sizeof(char) * (len + 1));
+	if (!line)
+		return(NULL);
+	i = 0;
+	while (i < len)
+	{
+		line[i] = remainder[i];
+		i++;
+	}
+	line[i] = '\0';
+	return (line);
+}
+
+char	*read_file(int fd, char *remainder)
+{
 	char	*buffer;
+	int		rd;
 
 	rd = 1;
 	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
-	{
 		return (NULL);
-		ft_free(save);
-	}
-	while (rd > 0 && !ft_strchr(save, '\n'))
+	while (rd > 0 && !ft_strchr(remainder, '\n'))
 	{
 		rd = read(fd, buffer, BUFFER_SIZE);
+		if (rd == -1)
+			return (free(buffer), NULL);
 		if (rd > 0)
 		{
 			buffer[rd] = '\0';
-			save = ft_strjoin(buffer, save);
+			remainder = ft_strjoin(remainder, buffer);
+			if (!remainder)
+				return (free(buffer), NULL);
 		}
 	}
-	save_remainder(save);
-	free (buffer);
-	return (save);
+	return (remainder);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*save;
+	static char	*remainder;
 	char		*line;
-
-	line = read_line(fd, save);
-	save = save_remainder(line);
+	
+	if (!remainder)
+		remainder = ft_strdup("");
+	if (!remainder)
+		return (NULL);
+	remainder = read_file(fd, remainder);
+    if (!remainder)
+		return NULL;
+	if (!remainder[0])
+	{
+    	free(remainder);
+   		remainder = NULL;
+		return NULL;
+	}
+	line = return_line(remainder);
+	remainder = update_remainder(remainder);
 	return (line);
 }
-#include <stdio.h>
 
-int main(void)
+//#include <stdio.h>
+
+/*int main(void)
 {
     char *line;
 
     printf("Escribe algo:\n");
     while ((line = get_next_line(0)) != NULL)
-    {
-        printf("Has escrito: %s\n", line);
+	{
+        printf("Has escrito:%s", line);
         free(line);
     }
-    printf("\nFin de la entrada.\n");
-    return (0);
+   printf("\nFin de la entrada.\n");
+    return 0;
+}
+
+//gcc -Wall -Wextra -Werror -DBUFFER_SIZE=32 get_next_line.c get_next_line_utils.c
+
+#include <fcntl.h>
+#include <unistd.h>
+
+/*int main(void)
+{
+    int fd;
+    char *line;
+
+    fd = open("texto.txt", O_RDONLY);
+    if (fd < 0)
+    {
+        perror("Error");
+        return 1;
+    }
+
+    while ((line = get_next_line(fd)) != NULL)
+    {
+        printf("%s", line);
+        free(line);
+    }
+
+    close(fd);
+    printf("\nFin de la lectura.\n");
+    return 0;
 }

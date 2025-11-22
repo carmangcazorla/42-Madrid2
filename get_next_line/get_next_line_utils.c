@@ -90,14 +90,15 @@ char    *ft_strjoin(char *s1, char *s2)
         char    *str;
 
         if (!s1 || !s2)
-                return (0);
+                return (NULL);
         len1 = ft_strlen(s1);
         len2 = ft_strlen(s2);
         str = (char *)malloc(len1 + len2 + 1);
         if (!str)
-                return (0);
+                return (NULL);
         ft_strncpy(str, (char *)s1, len1);
         ft_strncpy(str + len1, (char *)s2, len2);
         str[len1 + len2] = '\0';
+        free(s1);
         return (str);
 }
