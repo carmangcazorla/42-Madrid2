@@ -20,9 +20,14 @@ char	*update_remainder(char *remainder)
 	if (!update)
 	{
 		free(remainder);
-		return(NULL);
+		return (NULL);
 	}
 	temp = ft_strdup(update + 1);
+	if (!temp)
+	{
+		free(remainder);
+		return (NULL);
+	}
 	free(remainder);
 	remainder = temp;
 	return(remainder);
@@ -41,7 +46,7 @@ char	*return_line(char *remainder)
 		len ++;
 	line = malloc(sizeof(char) * (len + 1));
 	if (!line)
-		return(NULL);
+		return (NULL);
 	i = 0;
 	while (i < len)
 	{
@@ -56,90 +61,54 @@ char	*read_file(int fd, char *remainder)
 {
 	char	*buffer;
 	int		rd;
+    char    *tmp;
 
 	rd = 1;
 	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
-		return (NULL);
+		return (free(remainder), NULL);
 	while (rd > 0 && !ft_strchr(remainder, '\n'))
 	{
 		rd = read(fd, buffer, BUFFER_SIZE);
 		if (rd == -1)
-			return (free(buffer), NULL);
+		{
+			free(remainder);
+			free(buffer);
+			return (NULL);
+		}
 		if (rd > 0)
 		{
 			buffer[rd] = '\0';
-			remainder = ft_strjoin(remainder, buffer);
-			if (!remainder)
+			tmp = ft_strjoin(remainder, buffer);
+			if (!tmp)
 				return (free(buffer), NULL);
+			remainder = tmp;
 		}
 	}
-	return (remainder);
+	return (free(buffer), remainder);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	*remainder;
 	char		*line;
-	
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
 	if (!remainder)
 		remainder = ft_strdup("");
-	if (!remainder)
-		return (NULL);
 	remainder = read_file(fd, remainder);
     if (!remainder)
-		return NULL;
+		return (NULL);
 	if (!remainder[0])
 	{
     	free(remainder);
    		remainder = NULL;
-		return NULL;
+		return(NULL);
 	}
 	line = return_line(remainder);
+	if (!line)
+		return (NULL);
 	remainder = update_remainder(remainder);
 	return (line);
-}
-
-//#include <stdio.h>
-
-/*int main(void)
-{
-    char *line;
-
-    printf("Escribe algo:\n");
-    while ((line = get_next_line(0)) != NULL)
-	{
-        printf("Has escrito:%s", line);
-        free(line);
-    }
-   printf("\nFin de la entrada.\n");
-    return 0;
-}
-
-//gcc -Wall -Wextra -Werror -DBUFFER_SIZE=32 get_next_line.c get_next_line_utils.c
-
-#include <fcntl.h>
-#include <unistd.h>
-
-/*int main(void)
-{
-    int fd;
-    char *line;
-
-    fd = open("texto.txt", O_RDONLY);
-    if (fd < 0)
-    {
-        perror("Error");
-        return 1;
-    }
-
-    while ((line = get_next_line(fd)) != NULL)
-    {
-        printf("%s", line);
-        free(line);
-    }
-
-    close(fd);
-    printf("\nFin de la lectura.\n");
-    return 0;
 }

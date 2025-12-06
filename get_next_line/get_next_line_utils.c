@@ -13,7 +13,7 @@
 
 char    *ft_strdup(const char *src)
 {
-        int             i;
+        int     i;
         char    *dup;
 
         i = 0;
@@ -28,7 +28,6 @@ char    *ft_strdup(const char *src)
         }
         i = 0;
         while (src[i])
-
         {
                 dup[i] = src[i];
                 i++;
@@ -65,7 +64,7 @@ char    *ft_strchr(const char *s, int c)
         return (0);
 }
 
-static char     *ft_strncpy(char *dest, char *src, int n)
+static char *ft_strncpy(char *dest, char *src, int n)
 {
         int     i;
 
@@ -85,19 +84,24 @@ static char     *ft_strncpy(char *dest, char *src, int n)
 
 char    *ft_strjoin(char *s1, char *s2)
 {
-        int             len1;
-        int             len2;
         char    *str;
+        size_t          len1;
+        size_t          len2;
 
+        if (!s1)
+                s1 = ft_strdup("");
         if (!s1 || !s2)
                 return (NULL);
         len1 = ft_strlen(s1);
         len2 = ft_strlen(s2);
-        str = (char *)malloc(len1 + len2 + 1);
+        str = malloc(sizeof(char) * (len1 + len2 + 1));
         if (!str)
+        {
+                free(s1);
                 return (NULL);
-        ft_strncpy(str, (char *)s1, len1);
-        ft_strncpy(str + len1, (char *)s2, len2);
+        }
+        ft_strncpy(str, s1, len1);
+        ft_strncpy(str + len1, s2, len2);
         str[len1 + len2] = '\0';
         free(s1);
         return (str);
