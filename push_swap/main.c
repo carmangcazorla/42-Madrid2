@@ -9,7 +9,6 @@ int main(int argc, char **argv)
     stackA = create_stackA(argv);
     if (!stackA)
         return (ft_printf("Error\n"), 0);
-    valid = checkduplicate(stackA);
-    if (valid == 0)
+    if (!checkduplicate(stackA))
         return (ft_printf("Error\n"), 0);
 }
