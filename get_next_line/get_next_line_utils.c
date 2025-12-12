@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carmenga <carmenga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: carmengarciacazorla <carmengarciacazorl    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 17:32:10 by carmenga          #+#    #+#             */
-/*   Updated: 2025/11/29 11:39:56 by carmenga         ###   ########.fr       */
+/*   Updated: 2025/12/10 11:49:54 by carmengarci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "get_next_line.h"
 
 char	*ft_strdup(const char *src)
@@ -96,7 +97,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	if (!str)
 		return (NULL);
 	ft_strncpy(str, s1, len1);
-	ft_strncpy(str + len1, s2, len2);
+    ft_strncpy(str + len1, s2, len2);
 	str[len1 + len2] = '\0';
 	free(s1);
 	return (str);

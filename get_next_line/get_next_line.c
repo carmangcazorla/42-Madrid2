@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carmenga <carmenga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: carmengarciacazorla <carmengarciacazorl    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 17:31:39 by carmenga          #+#    #+#             */
-/*   Updated: 2025/12/07 13:56:59 by carmenga         ###   ########.fr       */
+/*   Updated: 2025/12/10 11:41:34 by carmengarci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line.h"
 
 char	*update_remainder(char *remainder)
 {
