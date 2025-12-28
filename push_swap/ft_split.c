@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carmenga <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: carmengarciacazorla <carmengarciacazorl    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 10:35:27 by carmenga          #+#    #+#             */
-/*   Updated: 2025/10/12 16:13:20 by carmenga         ###   ########.fr       */
+/*   Updated: 2025/12/21 21:14:55 by carmengarci      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
 
 static int	ft_word_count(const char *s, char c)
 {
@@ -85,30 +87,4 @@ char	**ft_split(const char *s, char c)
 	if (!arr)
 		return (NULL);
 	return (ft_fill_words(arr, s, c));
-}
-
-int is_valid_number(char **split)
-{
-    int i;
-    int j;
-
-    i = 0;
-    if (!split || !split[0])
-        return (0);
-    while (split[i])
-    {
-        j = 0;
-        if (split[i][j] == '-' || split[i][j] == '+')
-            j++;
-        if(!split[i][j])
-            return (0);
-        while (split[i][j])
-        {
-            if (split[i][j] < '0' || split[i][j] > '9')
-                return (0);
-            j++;
-        }
-        i++;
-    }
-    return (1);
 }
