@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: carmenga <carmenga@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/07 10:27:39 by carmenga          #+#    #+#             */
+/*   Updated: 2026/01/07 11:17:19 by carmenga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include <stdlib.h>
@@ -13,7 +25,14 @@ typedef struct s_stack
 
 long	ft_atol(const char *str);
 char	**ft_split(const char *s, char c);
+void	freestack(t_stack *stackA);
 void	freesplit(char **split);
+
+t_stack	*new_node(int num);
+void	last_node(t_stack **stackA, t_stack *node);
+int		add_numbers(char *arg, t_stack **stackA);
+t_stack	*create_stacka(char **argv);
+void	create_index(t_stack **stackA);
 
 int		check_intminmax(long number);
 int		is_valid_number(char **split);
@@ -21,33 +40,26 @@ int		check_number(char **str);
 int		checkduplicate(t_stack *stack);
 int		checksorted(t_stack **stackA);
 
-t_stack	*new_node(int num);
-void	last_node(t_stack **stackA, t_stack *node);
-t_stack	*create_stacka(char **argv);
-
-void	do_rra(t_stack **stackA);
-void	do_rrb(t_stack **stackB);
-void	do_rrr(t_stack **stackA, t_stack **stackB);
-void	rotate_down(t_stack **stack);
-void	do_ra(t_stack **stackA);
-void	do_rb(t_stack **stackB);
-void	rotate_up(t_stack **stack);
-void	do_rr(t_stack **stackA, t_stack **stackB);
 void	swap(t_stack **stack);
 void	do_sa(t_stack **stackA);
 void	do_sb(t_stack **stackB);
 void	do_ss(t_stack **stackA, t_stack **stackB);
 void	do_pa(t_stack **stackA, t_stack **stackB);
 void	do_pb(t_stack **stackA, t_stack **stackB);
+void	rotate_up(t_stack **stack);
+void	do_ra(t_stack **stackA);
+void	do_rb(t_stack **stackB);
+void	do_rr(t_stack **stackA, t_stack **stackB);
+void	rotate_down(t_stack **stack);
+void	do_rra(t_stack **stackA);
+void	do_rrb(t_stack **stackB);
+void	do_rrr(t_stack **stackA, t_stack **stackB);
 
+int		count_numbers(t_stack **stackA);
 void	sort(t_stack **stackA);
 void	sort_3_num(t_stack **stackA);
 void	sort_4_num(t_stack **stackA);
 void	sort_5_num(t_stack **stackA);
-int		count_numbers(t_stack **stackA);
 int		count_bits(int size);
 void	sort_large(t_stack **stackA);
-void	freestack(t_stack *stackA);
-void	create_index(t_stack **stackA);
-
 #endif

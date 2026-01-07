@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: carmengarciacazorla <carmengarciacazorl    +#+  +:+       +#+        */
+/*   By: carmenga <carmenga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/06 10:35:27 by carmenga          #+#    #+#             */
-/*   Updated: 2025/12/21 21:14:55 by carmengarci      ###   ########.fr       */
+/*   Created: 2026/01/07 10:26:31 by carmenga          #+#    #+#             */
+/*   Updated: 2026/01/07 10:26:33 by carmenga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
