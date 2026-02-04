@@ -1,16 +1,24 @@
-class plant:
-    def __init__(name, heigth, age):
+class Plant:
+    """Represents a plant with name, height and age."""
+    def __init__(self, name, height, age):
         self.name = name
-        self.heigth = heigth
+        self.height = height
         self.age = age
 
-def print_plantinfo():
-    print("=== Garden Plant Registry ===")
-    print(f"{self.name}: {self.heigth}cm, {self.age} days old")
 
-plant1 = plant(Rose, 25, 30)
-print_plantinfo()
-plant2 = plant(Sunflower, 80, 45)
-print_plantinfo()
-plant3 = plant(Cactus, 15, 120)
-print_plantinfo()
+plant1 = Plant("Rose", 25, 30)
+plant2 = Plant("Sunflower", 80, 45)
+plant3 = Plant("Cactus", 15, 120)
+print("=== Garden Plant Registry ===")
+print(
+    plant1.name + ": ", plant1.height,
+    "cm, ", plant1.age, " days old", sep=""
+    )
+print(
+    plant2.name + ": ", plant2.height,
+    "cm, ", plant2.age, " days old", sep=""
+    )
+print(
+    plant3.name + ": ", plant3.height,
+    "cm, ", plant3.age, " days old", sep=""
+    )

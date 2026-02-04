@@ -1,21 +1,40 @@
-class plant:
-    def __init__(name, heigth, age):
+class Plant:
+    """Represents a plant with name, height and age."""
+    def __init__(self, name, height, current_age):
         self.name = name
-        self.heigth = heigth
-        self.age = age
+        self.height = height
+        self.current_age = current_age
 
-    print("=== Day 1 ===")
-    print(f"{self.name}: {self.heigth}cm, {self.age} days old")
-    original_heigth = heigth
-    def get_info():
-        def age():
-            age += 6
-        def growth():
-            heigth += 6
-    print("=== Day 7 ===")
-    print(f"{self.name}: {self.heigth}cm, {self.age} days old")
-    growth = heigth - original_heigth
-    if growth > 0:
-        print(f"Growth this week: +{growth}cm")
-    else:
-        print(f"Growth this week: {growth}cm")
+    def grow(self):
+        """Increase plant height by 1 cm."""
+        self.height += 1
+
+    def age(self):
+        """Increase plant age by 1 day."""
+        self.current_age += 1
+
+    def get_info(self):
+        """Print plant information."""
+        print(
+            self.name + ":", self.height,
+            "cm,", self.current_age, "days old"
+            )
+
+
+print("=== Day 1 ===")
+plant1 = Plant("Rose", 25, 30)
+plant1.get_info()
+original_height = plant1.height
+
+days = 6
+day = 1
+for day in range(1, days + 1):
+    plant1.grow()
+    plant1.age()
+    day += 1
+
+print("=== Day 7 ===")
+plant1.get_info()
+
+growth = plant1.height - original_height
+print("Growth this week: +", growth, "cm", sep="")
