@@ -11,14 +11,17 @@ class WaterError(GardenError):
 
 
 def check_plant():
+    """Error related to plants"""
     raise PlantError("The tomato plant is wilting!")
 
 
 def check_water():
+    """Error related to watering."""
     raise WaterError("Not enough water in the tank!")
 
 
 def test_custom_errors():
+    """Testing errors"""
     print("=== Custom Garden Errors Demo ===\n")
 
     print("Testing PlantError...")

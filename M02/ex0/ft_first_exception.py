@@ -1,4 +1,5 @@
 def check_temperature(temp_str):
+    """testing temperature"""
     print("Testing temperature:", temp_str)
     try:
         number = int(temp_str)
@@ -20,6 +21,7 @@ def check_temperature(temp_str):
 
 
 def test_temperature_input():
+    """testing temperature"""
     print("=== Garden Temperature Checker ===\n")
     check_temperature("25")
     print()

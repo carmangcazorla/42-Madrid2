@@ -1,8 +1,9 @@
 class GardenError(Exception):
-    """Custom exception for garden problems"""
+    """Custom garden problems"""
 
 
 class Plant:
+    """Custom plant class"""
     def __init__(self, name, water_level, sunlight_hours):
         self.name = name
         self.water_level = water_level
@@ -10,10 +11,12 @@ class Plant:
 
 
 class GardenManager:
+    """Custom problems in garden"""
     def __init__(self):
         self.plants = []
 
     def add_plant(self, plant):
+        """Plant added to the garden"""
         try:
             if plant.name is None or plant.name == "":
                 raise GardenError("Plant name cannot be empty!")
@@ -23,6 +26,7 @@ class GardenManager:
             print("Error adding plant:", e)
 
     def water_plants(self):
+        """Watering plants"""
         print("Opening watering system")
         try:
             for plant in self.plants:
@@ -31,6 +35,7 @@ class GardenManager:
             print("Closing watering system (cleanup)")
 
     def check_plant_health(self):
+        "Checking water level and sunligth hours"
         for plant in self.plants:
             try:
                 if plant.water_level < 1:
@@ -45,9 +50,8 @@ class GardenManager:
                     )
                 if plant.sunlight_hours < 2:
                     raise GardenError(
-                        "Sunlight hours " + str(plant.sunlight_hours) +
-                        " is too low (min 2)"
-                    )
+                        f"Sunlight hours {plant.sunlight_hours}"
+                        "is too low (min 2)")
                 if plant.sunlight_hours > 12:
                     raise GardenError(
                         "Sunlight hours " + str(plant.sunlight_hours) +
@@ -67,7 +71,8 @@ class GardenManager:
                 print("Error checking", plant.name + ":", e)
 
 
-def main():
+def testing_errors():
+    """Test garden errors"""
     print("=== Garden Management System ===\n")
 
     manager = GardenManager()
@@ -94,4 +99,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    testing_errors()

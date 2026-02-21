@@ -1,4 +1,5 @@
 def garden_operations():
+    """Testing errors"""
     print("Testing ValueError...")
     try:
         int("abc")
@@ -29,10 +30,10 @@ def garden_operations():
         int("abc")
     except (ValueError, ZeroDivisionError):
         print("Caught an error, but program continues!")
-    print()
 
 
 def test_error_types():
+    """Testing errors"""
     print("=== Garden Error Types Demo ===")
     print()
     garden_operations()
