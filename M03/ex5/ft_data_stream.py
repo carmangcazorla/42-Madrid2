@@ -56,7 +56,7 @@ def fibonacci_generator(n):
     b = 1
     count = 0
 
-    while count < n:
+    for count in range(n):
         yield a
         temp = a
         a = b

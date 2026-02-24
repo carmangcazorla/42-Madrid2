@@ -15,9 +15,9 @@ def command_quest():
         print("Program name:", sys.argv[0])
         count = 1
         for arg in args[1:]:
-            print(f"Argument {count}:", arg)
+            print("Argument " + str(count) + ":", arg)
             count += 1
-            print("Total arguments:", total_args)
+        print("Total arguments:", total_args)
 
 
 if __name__ == "__main__":
