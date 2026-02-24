@@ -1,14 +1,16 @@
-def generate_events(n):
-    players = ["alice", "bob", "charlie"]
-    actions = ["killed monster", "found treasure", "leveled up"]
-    levels = [5, 12, 8]
+def game_event(n):
+    players = ("alice", "bob", "charlie", "diana")
+    levels = {"alice": 5, "bob": 12, "charlie": 8, "diana": 15}
+    actions = ("killed monster", "found treasure", "leveled up", "defeated boss")
 
     for i in range(n):
         player = players[i % len(players)]
         action = actions[i % len(actions)]
-        level = levels[i % len(levels)]
 
-        yield player, level, action
+        if action == "leveled up":
+            levels[player] += 1
+
+        yield player, levels[player], action
 
 
 def process_stream(n):
@@ -20,7 +22,7 @@ def process_stream(n):
     treasure = 0
     levelup = 0
 
-    events = generate_events(n)
+    events = game_event(n)
 
     for player, level, action in events:
         total += 1

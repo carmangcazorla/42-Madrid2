@@ -112,15 +112,23 @@ def analytics_dashboard():
     total_players = len(players_data)
     total_unique_achievements = len(unique_achievements)
 
-    average_score = sum(player_scores.values()) / len(player_scores)
+    total_score = 0
+    count = 0
+    for player in player_scores:
+        total_score += player_scores[player]
+        count += 1
+
+    average_score = total_score / count if count > 0 else 0
 
     max_score = 0
-    for player, score in player_scores.items():
-        if score > max_score:
+    top_player = None
+    for player in player_scores:
+         score = player_scores[player]
+         if score > max_score:
             max_score = score
             top_player = player
-
     top_score = player_scores[top_player]
+    
     top_achievements = len(players_data[top_player]["achievements"])
 
     print("Total players:", total_players)
