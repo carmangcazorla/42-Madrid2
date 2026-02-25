@@ -1,7 +1,13 @@
 def game_event(n):
+    """Generate n games events."""
     players = ("alice", "bob", "charlie", "diana")
     levels = {"alice": 5, "bob": 12, "charlie": 8, "diana": 15}
-    actions = ("killed monster", "found treasure", "leveled up", "defeated boss")
+    actions = (
+        "killed monster",
+        "found treasure",
+        "leveled up",
+        "defeated boss"
+        )
 
     for i in range(n):
         player = players[i % len(players)]
@@ -13,7 +19,8 @@ def game_event(n):
         yield player, levels[player], action
 
 
-def process_stream(n):
+def process_events(n):
+    """Count achivements in events."""
     print("=== Game Data Stream Processor ===\n")
     print("Processing", n, "game events...\n")
 
@@ -52,6 +59,7 @@ def process_stream(n):
 
 
 def fibonacci_generator(n):
+    """Generate the first n Fibonacci numbers."""
     a = 0
     b = 1
     count = 0
@@ -65,6 +73,7 @@ def fibonacci_generator(n):
 
 
 def is_prime(num):
+    """Check if a number is prime."""
     if num < 2:
         return False
     for i in range(2, num):
@@ -74,6 +83,7 @@ def is_prime(num):
 
 
 def prime_generator(n):
+    """Generate the first n prime numbers."""
     count = 0
     num = 2
 
@@ -85,7 +95,7 @@ def prime_generator(n):
 
 
 def data_stream():
-    process_stream(1000)
+    process_events(1000)
 
     print("\n=== Generator Demonstration ===")
 

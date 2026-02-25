@@ -2,6 +2,7 @@ import sys
 
 
 def score_analytics():
+    """Analyze score data provided as arguments."""
     arguments = sys.argv[1:]
     scores = []
 
@@ -18,7 +19,7 @@ def score_analytics():
                 scores = scores + [int(arg)]
             except ValueError:
                 print("Invalid input '" + arg + "': Not a number.")
-                
+
     if len(scores) > 0:
         total_players = len(scores)
         total_score = sum(scores)

@@ -1,10 +1,12 @@
 def analytics_dashboard():
+    """list, dict and set comprehensions examples."""
     print("=== Game Analytics Dashboard ===")
 
     players_data = {
         "alice": {
             "score": 2300,
             "active": True,
+            "region": "north",
             "achievements": [
                 "first_kill",
                 "level_10",
@@ -16,6 +18,7 @@ def analytics_dashboard():
         "bob": {
             "score": 1800,
             "active": True,
+            "region": "east",
             "achievements": [
                 "first_kill",
                 "level_10",
@@ -25,6 +28,7 @@ def analytics_dashboard():
         "charlie": {
             "score": 2150,
             "active": True,
+            "region": "central",
             "achievements": [
                 "level_10",
                 "boss_slayer",
@@ -38,6 +42,7 @@ def analytics_dashboard():
         "diana": {
             "score": 2050,
             "active": False,
+            "region": "north",
             "achievements": ["first_kill"]
         }
     }
@@ -104,8 +109,15 @@ def analytics_dashboard():
         for ach in players_data[p]["achievements"]
     }
 
+    active_regions = {
+        reg
+        for p in players_data
+        for reg in [players_data[p]["region"]]
+    }
+
     print("Unique players:", unique_players)
     print("Unique achievements:", unique_achievements)
+    print("Active regions:", active_regions)
 
     print("\n=== Combined Analysis ===")
 
@@ -128,7 +140,7 @@ def analytics_dashboard():
             max_score = score
             top_player = player
     top_score = player_scores[top_player]
-    
+
     top_achievements = len(players_data[top_player]["achievements"])
 
     print("Total players:", total_players)

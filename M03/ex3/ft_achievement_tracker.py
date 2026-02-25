@@ -1,4 +1,5 @@
 def achivement_tracker():
+    """Track and analyze player common and unique achievements."""
     print("=== Achievement Tracker System ===\n")
 
     alice = set([
@@ -40,7 +41,7 @@ def achivement_tracker():
     bob_rare = bob.difference(alice.union(charlie))
     charlie_rare = charlie.difference(alice.union(bob))
     rare = alice_rare.union(bob_rare.union(charlie_rare))
-    
+
     print("Rare achievements (1 player):", rare)
 
     alice_bob_common = alice.intersection(bob)

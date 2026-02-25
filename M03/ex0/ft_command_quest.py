@@ -2,6 +2,7 @@ import sys
 
 
 def command_quest():
+    """Show arguments passed to the program and count them."""
     args = sys.argv[0:]
     total_args = len(args)
 

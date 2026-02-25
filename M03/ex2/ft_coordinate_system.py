@@ -2,16 +2,19 @@ import math
 
 
 def create_position(x, y, z):
+    """Create a coordinate position as a tuple."""
     return (x, y, z)
 
 
 def calculate_distance(p1, p2):
+    """Calculate the distance between two coordinates in 3D space."""
     x1, y1, z1 = p1
     x2, y2, z2 = p2
     return math.sqrt((x2-x1)**2 + (y2-y1)**2 + (z2-z1)**2)
 
 
 def parse_coordinates(coordinate):
+    """Create a coordinate tuple from a string."""
     try:
         parts = coordinate.split(',')
         x = int(parts[0])
@@ -25,6 +28,7 @@ def parse_coordinates(coordinate):
 
 
 def coordinate_system():
+    """Demonstrate the use of coordinate systems."""
     print("=== Game Coordinate System ===\n")
 
     position = create_position(10, 20, 5)

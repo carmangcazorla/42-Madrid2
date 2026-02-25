@@ -1,11 +1,14 @@
 def inventory_value(inventory):
+    """Calculate total value of the inventory."""
     total = 0
     for data in inventory.values():
-        total += data["quantity"] * data["value"]
+        value = data["quantity"] * data["value"]
+        total += value
     return total
 
 
 def total_items_count(inventory):
+    """Calculate total items in inventory."""
     count = 0
     for data in inventory.values():
         count += data["quantity"]
@@ -13,6 +16,7 @@ def total_items_count(inventory):
 
 
 def found_rare_items(inventory):
+    """Find rare items in the inventory."""
     rare_items = []
     for item, data in inventory.items():
         if data["rarity"] == "rare":
@@ -21,6 +25,7 @@ def found_rare_items(inventory):
 
 
 def print_inventory(name, inventory):
+    """Print inventory details."""
     print("\n===", name + "'s Inventory ===")
 
     total_value = 0
@@ -48,6 +53,7 @@ def print_inventory(name, inventory):
 
 
 def transfer_potions(alice, bob):
+    """Transfer two potions from Alice to Bob."""
     print()
     print("\n=== Transaction: Alice gives Bob 2 potions ===")
 
@@ -60,6 +66,7 @@ def transfer_potions(alice, bob):
 
 
 def inventory_system():
+    """Demonstrate a player inventory system using dictionaries."""
     print("=== Player Inventory System ===")
 
     alice = dict({
